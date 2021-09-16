@@ -1,5 +1,5 @@
 import React from "react";
-
+import Proptypes from 'prop-types';
 const Form = ({setStatus,setInputText,todos,setTodos,inputText}) => {
     const inputTextHandler =(e) =>{
         //console.log(e.target.value);
@@ -32,4 +32,11 @@ const Form = ({setStatus,setInputText,todos,setTodos,inputText}) => {
     );
 };
 
+Form.propTypes = {
+  setStatus:Proptypes.any,
+  setInputText:Proptypes.any,
+  inputText:Proptypes.string,
+  todos:Proptypes.any,
+  setTodos:Proptypes.any
+};
 export default Form;

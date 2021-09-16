@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Proptypes from 'prop-types';
 const Todo =({text, todo, todos, setTodos})=>{
     const deleteHandler = () =>{
          setTodos(todos.filter((el) => el.id !== todo.id));
@@ -25,4 +25,11 @@ const Todo =({text, todo, todos, setTodos})=>{
          </div>
     );
 }
+
+Todo.propTypes = {
+   text:Proptypes.string,
+   todo:Proptypes.any,
+   todos:Proptypes.any,
+   setTodos:Proptypes.map,
+  };
 export default Todo;
