@@ -24,7 +24,5 @@ const TodoList :FC<TodoListProps>= ({todos,setTodos,filteredTodos}) =>{
         </div>
     );
 };
-TodoList.propTypes = {
-    
-   };
+
 export default TodoList;
