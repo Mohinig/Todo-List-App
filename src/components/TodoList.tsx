@@ -1,12 +1,17 @@
-import React from "react";
+import React,{FC} from "react";
 import Todo from "./Todo";
-import Proptypes from 'prop-types';
-const TodoList = ({todos,setTodos,filteredTodos}) =>{
+
+interface TodoListProps{
+    todos:any,
+    setTodos:any,
+    filteredTodos:any
+}
+const TodoList :FC<TodoListProps>= ({todos,setTodos,filteredTodos}) =>{
     //console.log(filteredTodos);
     return (
         <div className="todo-container">
           <ul className="todo-list">
-         {filteredTodos.map(todo => (
+         {filteredTodos.map((todo: { id: React.Key | null | undefined; text: any; }) => (
              <Todo 
              setTodos={setTodos} 
              todo={todo} 
@@ -20,8 +25,6 @@ const TodoList = ({todos,setTodos,filteredTodos}) =>{
     );
 };
 TodoList.propTypes = {
-    todos:Proptypes.any,
-    setTodos:Proptypes.map,
-    filteredTodos:Proptypes.any
+    
    };
 export default TodoList;

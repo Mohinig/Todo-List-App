@@ -1,18 +1,25 @@
-import React from "react";
-import Proptypes from 'prop-types';
-const Form = ({setStatus,setInputText,todos,setTodos,inputText}) => {
-    const inputTextHandler =(e) =>{
+import React,{FC} from "react";
+
+interface FormProps{
+  setStatus:any,
+  setInputText:any,
+  inputText:string,
+  todos:any,
+  setTodos:any
+}
+const Form :FC<FormProps> = ({setStatus,setInputText,todos,setTodos,inputText}) => {
+    const inputTextHandler =(e: { target: { value: any; }; }) =>{
         //console.log(e.target.value);
         setInputText(e.target.value);
     };
-    const submitTodoHandler =(e)=>{
+    const submitTodoHandler =(e: { preventDefault: () => void; })=>{
      e.preventDefault();
      setTodos([
          ...todos,{text:inputText,completed:false,id:Math.random()*1000},
      ]);
      setInputText("");
     };  
-    const statusHandler =(e)=>{
+    const statusHandler =(e: { target: { value: any; }; })=>{
       setStatus(e.target.value);
     }
     return (
@@ -32,11 +39,4 @@ const Form = ({setStatus,setInputText,todos,setTodos,inputText}) => {
     );
 };
 
-Form.propTypes = {
-  setStatus:Proptypes.any,
-  setInputText:Proptypes.any,
-  inputText:Proptypes.string,
-  todos:Proptypes.any,
-  setTodos:Proptypes.any
-};
 export default Form;
