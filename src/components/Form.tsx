@@ -1,28 +1,28 @@
-import React,{FC} from "react";
+import React, { FC } from "react";
 
-interface FormProps{
-  setStatus:any,
-  setInputText:any,
-  inputText:string,
-  todos:any,
-  setTodos:any
+interface FormProps {
+  setStatus: any,
+  setInputText: any,
+  inputText: string,
+  todos: Array<string>,
+  setTodos: any
 }
-const Form :FC<FormProps> = ({setStatus,setInputText,todos,setTodos,inputText}) => {
-    const inputTextHandler =(e: { target: { value: any; }; }) =>{
-        //console.log(e.target.value);
-        setInputText(e.target.value);
-    };
-    const submitTodoHandler =(e: { preventDefault: () => void; })=>{
-     e.preventDefault();
-     setTodos([
-         ...todos,{text:inputText,completed:false,id:Math.random()*1000},
-     ]);
-     setInputText("");
-    };  
-    const statusHandler =(e: { target: { value: any; }; })=>{
-      setStatus(e.target.value);
-    }
-    return (
+const Form: FC<FormProps> = ({ setStatus, setInputText, todos, setTodos, inputText }) => {
+  const inputTextHandler = (e: { target: { value: any; }; }) => {
+    //console.log(e.target.value);
+    setInputText(e.target.value);
+  };
+  const submitTodoHandler = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setTodos([
+      ...todos, { text: inputText, completed: false, id: Math.random() * 1000 },
+    ]);
+    setInputText("");
+  };
+  const statusHandler = (e: { target: { value: any; }; }) => {
+    setStatus(e.target.value);
+  }
+  return (
     <form>
       <input value={inputText} onChange={inputTextHandler} type="text" className="todo-input" />
       <button onClick={submitTodoHandler} className="todo-button" type="submit">
@@ -36,7 +36,7 @@ const Form :FC<FormProps> = ({setStatus,setInputText,todos,setTodos,inputText}) 
         </select>
       </div>
     </form>
-    );
+  );
 };
 
 export default Form;
